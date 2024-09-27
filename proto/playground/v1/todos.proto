@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+package azuka.connect.playground.api.v1;
+
+import "buf/validate/validate.proto";
+import "gnostic/openapi/v3/annotations.proto";
+import "google/protobuf/timestamp.proto";
+import "playground/v1/type_common.proto";
+
+option go_package = "go.azuka.me/connect-playground/internal/pkg/proto/playground/v1";
+
+message TodoServiceGetRequest {
+  string uuid = 1;
+}
+
+message TodoServiceGetResponse {
+  string uuid = 1;
+  string name = 2;
+  google.protobuf.Timestamp when = 3;
+  //  string email = 4 [(buf.validate.field).string.email = true];
+  google.protobuf.Timestamp created_at = 50;
+  google.protobuf.Timestamp updated_at = 52;
+}
+
+message TodoServiceCreateRequest {
+  string name = 1;
+  google.protobuf.Timestamp when = 3;
+  //  string email = 3 [(buf.validate.field).string.email = true];
+}
+
+message TodoServiceCreateResponse {
+  string uuid = 1;
+  string name = 2;
+  google.protobuf.Timestamp when = 3;
+  //  string email = 4 [(buf.validate.field).string.email = true];
+  google.protobuf.Timestamp created_at = 50;
+  google.protobuf.Timestamp updated_at = 52;
+}
+
+message TodoServiceUpdateRequest {
+  string uuid = 1;
+  google.protobuf.Timestamp when = 3;
+  //  string email = 4 [(buf.validate.field).string.email = true];
+}
+
+message TodoServiceUpdateResponse {
+  string uuid = 1;
+  string name = 2;
+  google.protobuf.Timestamp when = 3;
+  //  string email = 4 [(buf.validate.field).string.email = true];
+  google.protobuf.Timestamp created_at = 50;
+  google.protobuf.Timestamp updated_at = 52;
+}
+
+message TodoServiceListRequest {
+  string filter = 1;
+  uint32 page_index = 2;
+  uint32 page_size = 3 [(buf.validate.field).uint32.lte = 200];
+}
+
+message TodoServiceListResponse {
+  repeated TodoServiceCreateResponse items = 1;
+  Pagination pagination = 2;
+}
+
+message TodoServiceDeleteRequest {
+  string uuid = 1;
+}
+
+message TodoServiceDeleteResponse {}
+
+service TodoService {
+  rpc Create(TodoServiceCreateRequest) returns (TodoServiceCreateResponse) {
+    option (gnostic.openapi.v3.operation).description = "Create todo";
+  }
+  rpc Update(TodoServiceUpdateRequest) returns (TodoServiceUpdateResponse) {
+    option (gnostic.openapi.v3.operation).description = "Update todo";
+  }
+  rpc Get(TodoServiceGetRequest) returns (TodoServiceGetResponse) {
+    option (gnostic.openapi.v3.operation).description = "Get todo";
+  }
+  rpc List(TodoServiceListRequest) returns (TodoServiceListResponse) {
+    option (gnostic.openapi.v3.operation).description = "List todos with filters";
+  }
+  rpc Delete(TodoServiceDeleteRequest) returns (TodoServiceDeleteResponse) {
+    option (gnostic.openapi.v3.operation).description = "Delete todo";
+  }
+}

@@ -1,0 +1,26 @@
+version: v2
+managed:
+  enabled: true
+plugins:
+  - remote: buf.build/protocolbuffers/go
+    out: internal/pkg/proto
+    opt: paths=source_relative
+  - remote: buf.build/connectrpc/go
+    out: internal/pkg/proto
+    opt: paths=source_relative
+  - local: protoc-gen-connect-openapi
+    out: internal/pkg/proto
+    strategy: all
+    opt:
+      - base=proto/openapi.base.yaml
+      - content-types=json
+      - allow-get
+      - path=openapi.yaml
+  - local: ./node_modules/.bin/protoc-gen-es
+    opt: target=ts,import_extension=none
+    out: src/gen
+  - local: ./node_modules/.bin/protoc-gen-connect-es
+    opt: target=ts,import_extension=none
+    out: src/gen
+inputs:
+  - directory: proto

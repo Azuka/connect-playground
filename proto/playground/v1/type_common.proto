@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package azuka.connect.playground.api.v1;
+
+import "buf/validate/validate.proto";
+import "gnostic/openapi/v3/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "go.azuka.me/connect-playground/internal/pkg/proto/playground/v1";
+
+message Pagination {
+  int64 total = 1;
+  string next_token = 2;
+  string previous_token = 3;
+  int64 page = 4;
+  int64 limit = 5;
+}

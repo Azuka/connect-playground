@@ -1,0 +1,23 @@
+{
+  "name": "connect-playground",
+  "version": "1.0.0",
+  "description": "A simple connect set of dependencies",
+  "main": "ts-server/index.ts",
+  "scripts": {
+    "generate-barrels": "barrelsby -c barrelsby.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@bufbuild/buf": "^1.42.0",
+    "@bufbuild/protobuf": "^1.10.0",
+    "@bufbuild/protoc-gen-es": "^1.10.0",
+    "@connectrpc/connect": "^1.5.0",
+    "@connectrpc/connect-node": "^1.5.0",
+    "@connectrpc/protoc-gen-connect-es": "^1.5.0",
+    "barrelsby": "^2.8.1",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2"
+  }
+}

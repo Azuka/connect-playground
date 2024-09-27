@@ -1,0 +1,5 @@
+openapi: 3.1.0
+info:
+  description: 'Connect Playground API Documentation'
+  title: Example Platform
+  version: v1.0.0

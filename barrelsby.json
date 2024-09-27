@@ -1,0 +1,19 @@
+{
+  "baseUrl": "",
+  "directory": ["./src/gen/playground/v1"],
+  "delete": true,
+  "location": "top",
+  "name": "index",
+  "structure": "flat",
+  "verbose": false,
+  "include": [".ts$"],
+  "singleQuotes": true,
+  "exclude": [
+    "index.ts$",
+    "test-setup.ts$",
+    ".spec.ts$",
+    ".cy.ts$",
+    "zeta.ts$",
+    "buf/(.*)_pb.ts$"
+  ]
+}

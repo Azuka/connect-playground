@@ -1,0 +1,15 @@
+# For details on buf.yaml configuration, visit https://buf.build/docs/configuration/v2/buf-yaml
+version: v2
+deps:
+  - buf.build/protocolbuffers/wellknowntypes
+  - buf.build/bufbuild/protovalidate
+  - buf.build/gnostic/gnostic
+#  - buf.build/googleapis/googleapis
+modules:
+  - path: proto
+lint:
+  use:
+    - STANDARD
+breaking:
+  use:
+    - FILE
